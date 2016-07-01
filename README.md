@@ -1,3 +1,32 @@
+Room
+----
+Dimension format: "height(rows), width(cols)"
+Dimension example: "5,6"
+Coordinates space: top-left origin
+ 012345
+0..###.
+1.####.
+2######
+3######
+4...###
+
+Furniture
+---------
+Representation: typeWidthBody
+
+Coordinates space: top-left origin
+A2####:
+ 01
+0##
+1##
+
+B3.#.###.#.
+ 012
+0.#.
+1###
+2.#.
+
+
 Build
 =====
 mvn eclipse:eclipse  //create Eclipse project

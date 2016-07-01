@@ -1,7 +1,7 @@
 package sk.fillo.furniturearranger;
 
 /**
- * Hello world!
+ * Furniture Arranger
  *
  */
 public class App {
