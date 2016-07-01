@@ -2,24 +2,17 @@ package sk.fillo.furniturearranger;
 
 import java.util.Scanner;
 
-public class FurnitureScanner {
 
-	private static final int MIN_REPRESENTATION = 3; // T1#
+public class FurnitureScanner extends ScannerWrapper {
 
-	private final Scanner scanner;
+	private static final int MIN_REPRESENTATION = 3; // example: "T1#"
 
 	public FurnitureScanner(Scanner scanner) {
-		if (scanner == null) {
-			throw new NullPointerException("Scanner must be povided");
-		}
-		this.scanner = scanner;
+		super(scanner);
 	}
 
 	public FurnitureScanner(String source) {
-		if (source == null) {
-			throw new NullPointerException("Source must be povided");
-		}
-		this.scanner = new Scanner(source);
+		super(source);
 	}
 
 	public Furniture getFurniture() {

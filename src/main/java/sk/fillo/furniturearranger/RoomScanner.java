@@ -2,24 +2,16 @@ package sk.fillo.furniturearranger;
 
 import java.util.Scanner;
 
-public class RoomScanner {
+public class RoomScanner extends ScannerWrapper {
 
 	private static final String DIM_DELIMENTER = ",";
 
-	private final Scanner scanner;
-
 	public RoomScanner(Scanner scanner) {
-		if (scanner == null) {
-			throw new NullPointerException("Scanner must be povided");
-		}
-		this.scanner = scanner;
+		super(scanner);
 	}
 
 	public RoomScanner(String source) {
-		if (source == null) {
-			throw new NullPointerException("Source must be povided");
-		}
-		this.scanner = new Scanner(source);
+		super(source);
 	}
 
 	public Room getRoom() {
@@ -46,7 +38,7 @@ public class RoomScanner {
 				space[r][c] = row.charAt(c);
 			}
 		}
-		return new Room(width, height, space);
+		return new Room(space);
 	}
 
 }

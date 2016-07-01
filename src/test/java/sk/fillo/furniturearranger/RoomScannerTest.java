@@ -12,7 +12,7 @@ public class RoomScannerTest {
 	@Test
 	public void roomCreation() {
 		String roomSource =	"5,6" + EOL
-			+ "..###." + EOL 
+			+ "..###." + EOL
 			+ ".####." + EOL
 			+ "######" + EOL
 			+ "######" + EOL
