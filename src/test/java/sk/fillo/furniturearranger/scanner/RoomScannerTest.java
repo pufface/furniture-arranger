@@ -5,11 +5,12 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
+import sk.fillo.furniturearranger.App;
 import sk.fillo.furniturearranger.models.Room;
 
 public class RoomScannerTest {
 
-	private static final String EOL = "\n";
+	private static final String EOL = App.EOL;
 
 	public static final String ROOM_1 = "5,6" + EOL
 										+ "..###." + EOL

@@ -1,6 +1,7 @@
 package sk.fillo.furniturearranger.models;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public class Room {
@@ -50,6 +51,19 @@ public class Room {
 		Room room = new Room(this);
 		room.add(furniture);
 		return room;
+	}
+
+	public String getFormatedOutput() {
+		StringBuilder sb = new StringBuilder();
+		Iterator<Furniture> it = furnitures.iterator();
+		if (it.hasNext()) {
+			sb.append(it.next());
+		}
+		while (it.hasNext()) {
+			sb.append(" ");
+			sb.append(it.next());
+		}
+		return sb.toString();
 	}
 
 	private boolean canHold(Furniture furniture) {

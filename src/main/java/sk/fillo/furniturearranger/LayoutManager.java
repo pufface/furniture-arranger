@@ -1,5 +1,8 @@
 package sk.fillo.furniturearranger;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -28,13 +31,22 @@ public class LayoutManager {
 		return layouts;
 	}
 
+	public void printLayoutOutputTo(OutputStream out) throws IOException {
+		try (OutputStreamWriter writer = new OutputStreamWriter(out)) {
+			for (Room layout : layouts) {
+				writer.write(layout.getFormatedOutput());
+				writer.write(System.lineSeparator());
+			}
+		}
+	}
+
 	private Set<Room> computeAllPosibleLayouts(Furniture furniture) {
 		Set<Room> possibleLayouts = new HashSet<Room>();
 		for (Room room : layouts) {
 			for (int r = 0; r < room.getHeight(); r++) {
 				for (int c = 0; c < room.getWidth(); c++) {
-					furniture.setPosition(c, r);
-					Room nextLayout = room.lay(furniture);
+					Furniture fur = new Furniture(furniture, c, r);
+					Room nextLayout = room.lay(fur);
 					if (nextLayout != null) {
 						possibleLayouts.add(nextLayout);
 					}

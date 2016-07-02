@@ -1,6 +1,10 @@
 package sk.fillo.furniturearranger.scanner;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
+import org.apache.commons.lang3.StringUtils;
 
 import sk.fillo.furniturearranger.models.Furniture;
 
@@ -17,17 +21,23 @@ public class FurnitureScanner extends ScannerWrapper {
 		super(source);
 	}
 
-	public Furniture getFurniture() {
-		if (!scanner.hasNext()) {
-			throw new IllegalArgumentException("Missing first line");
+	public List<Furniture> getFurnitures() {
+		List<Furniture> furnitures = new ArrayList<Furniture>();
+		while (scanner.hasNext()) {
+			String line = scanner.next();
+			Furniture furniture = parseFurniture(line);
+			furnitures.add(furniture);
 		}
-		String source = scanner.next().trim();
+		return furnitures;
+	}
+
+	private Furniture parseFurniture(String line) {
+		String source = StringUtils.trim(line);
 		if (source.length() < MIN_REPRESENTATION) {
 			throw new IllegalArgumentException("Invalid furniture representation: " + source);
 		}
 		char type = source.charAt(0);
-		char digit = source.charAt(1);
-		int width = Character.getNumericValue(digit);
+		int width = Character.getNumericValue(source.charAt(1));
 		int bodyLength = source.length() - 2;
 		if (bodyLength % width != 0) {
 			throw new IllegalArgumentException("Invalid furniture representation: " + source);

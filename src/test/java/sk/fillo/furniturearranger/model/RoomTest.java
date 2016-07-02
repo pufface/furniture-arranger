@@ -7,6 +7,8 @@ import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
+import java.util.List;
+
 import org.junit.Test;
 
 import sk.fillo.furniturearranger.models.Furniture;
@@ -19,11 +21,13 @@ import sk.fillo.furniturearranger.scanner.RoomScannerTest;
 public class RoomTest {
 
 	Room room = new RoomScanner(RoomScannerTest.ROOM_1).getRoom();
-	Furniture furnitureA = new FurnitureScanner(FurnitureScannerTest.FURNITURE_A).getFurniture();
-	Furniture furnitureB = new FurnitureScanner(FurnitureScannerTest.FURNITURE_B).getFurniture();
+	List<Furniture> furnitures = new FurnitureScanner(FurnitureScannerTest.FURNITURES).getFurnitures();
+	Furniture furnitureA = furnitures.get(0);
+	Furniture furnitureB = furnitures.get(1);
 
 	@Test
 	public void testLayout1Furniture() {
+
 		Room layout1 = room.lay(new Furniture(furnitureA, 2, 0));
 		assertThat(layout1, is(not(nullValue())));
 		layout1 = layout1.lay(new Furniture(furnitureB, 3, 1));

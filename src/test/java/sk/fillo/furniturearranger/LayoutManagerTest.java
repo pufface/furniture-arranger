@@ -5,6 +5,7 @@ import static org.hamcrest.CoreMatchers.hasItem;
 import static org.junit.Assert.assertThat;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.Test;
@@ -18,12 +19,13 @@ import sk.fillo.furniturearranger.scanner.RoomScannerTest;
 
 public class LayoutManagerTest {
 
+	Room room = new RoomScanner(RoomScannerTest.ROOM_1).getRoom();
+	List<Furniture> furnitures = new FurnitureScanner(FurnitureScannerTest.FURNITURES).getFurnitures();
+	Furniture furnitureA = furnitures.get(0);
+	Furniture furnitureB = furnitures.get(1);
+
 	@Test
 	public void testArranger1() {
-		Room room = new RoomScanner(RoomScannerTest.ROOM_1).getRoom();
-		Furniture furnitureA = new FurnitureScanner(FurnitureScannerTest.FURNITURE_A).getFurniture();
-		Furniture furnitureB = new FurnitureScanner(FurnitureScannerTest.FURNITURE_B).getFurniture();
-
 		Room layout1 = room.lay(new Furniture(furnitureA, 2, 0)).lay(new Furniture(furnitureB, 3, 1));
 		Room layout2 = room.lay(new Furniture(furnitureA, 3, 0)).lay(new Furniture(furnitureB, 0, 1));
 
