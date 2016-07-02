@@ -1,13 +1,20 @@
 package sk.fillo.furniturearranger;
 
-import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.hasItem;
 import static org.junit.Assert.assertThat;
 
 import java.util.Arrays;
 import java.util.Set;
 
 import org.junit.Test;
+
+import sk.fillo.furniturearranger.models.Furniture;
+import sk.fillo.furniturearranger.models.Room;
+import sk.fillo.furniturearranger.scanner.FurnitureScanner;
+import sk.fillo.furniturearranger.scanner.FurnitureScannerTest;
+import sk.fillo.furniturearranger.scanner.RoomScanner;
+import sk.fillo.furniturearranger.scanner.RoomScannerTest;
 
 public class LayoutManagerTest {
 

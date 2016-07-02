@@ -1,4 +1,4 @@
-package sk.fillo.furniturearranger;
+package sk.fillo.furniturearranger.model;
 
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.CoreMatchers.is;
@@ -8,6 +8,13 @@ import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
+
+import sk.fillo.furniturearranger.models.Furniture;
+import sk.fillo.furniturearranger.models.Room;
+import sk.fillo.furniturearranger.scanner.FurnitureScanner;
+import sk.fillo.furniturearranger.scanner.FurnitureScannerTest;
+import sk.fillo.furniturearranger.scanner.RoomScanner;
+import sk.fillo.furniturearranger.scanner.RoomScannerTest;
 
 public class RoomTest {
 

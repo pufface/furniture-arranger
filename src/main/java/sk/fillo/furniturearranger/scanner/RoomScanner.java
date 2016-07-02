@@ -1,6 +1,8 @@
-package sk.fillo.furniturearranger;
+package sk.fillo.furniturearranger.scanner;
 
 import java.util.Scanner;
+
+import sk.fillo.furniturearranger.models.Room;
 
 public class RoomScanner extends ScannerWrapper {
 

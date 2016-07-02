@@ -4,6 +4,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import sk.fillo.furniturearranger.models.Furniture;
+import sk.fillo.furniturearranger.models.Room;
+
 public class LayoutManager {
 
 	private List<Furniture> furnitures;

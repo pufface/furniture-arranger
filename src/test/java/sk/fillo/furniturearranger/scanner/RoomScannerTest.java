@@ -1,9 +1,11 @@
-package sk.fillo.furniturearranger;
+package sk.fillo.furniturearranger.scanner;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
+
+import sk.fillo.furniturearranger.models.Room;
 
 public class RoomScannerTest {
 

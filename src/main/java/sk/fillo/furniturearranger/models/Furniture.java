@@ -1,4 +1,4 @@
-package sk.fillo.furniturearranger;
+package sk.fillo.furniturearranger.models;
 
 public class Furniture {
 
