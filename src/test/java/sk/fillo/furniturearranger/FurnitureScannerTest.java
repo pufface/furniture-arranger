@@ -1,16 +1,18 @@
 package sk.fillo.furniturearranger;
 
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
 public class FurnitureScannerTest {
 
+	public static final String FURNITURE_A = "A2##.#";
+	public static final String FURNITURE_B = "B3.#.###.#.";
+
 	@Test
 	public void furnitureCreationA() {
-		String furnitureSource = "A2##.#";
-		FurnitureScanner furnitureScanner = new FurnitureScanner(furnitureSource);
+		FurnitureScanner furnitureScanner = new FurnitureScanner(FURNITURE_A);
 		Furniture furniture = furnitureScanner.getFurniture();
 		assertThat(furniture.getWidth(), is(2));
 		assertThat(furniture.getHeight(), is(2));
@@ -23,8 +25,7 @@ public class FurnitureScannerTest {
 
 	@Test
 	public void furnitureCreationB() {
-		String furnitureSource = "B3.#.###.#.";
-		FurnitureScanner furnitureScanner = new FurnitureScanner(furnitureSource);
+		FurnitureScanner furnitureScanner = new FurnitureScanner(FURNITURE_B);
 		Furniture furniture = furnitureScanner.getFurniture();
 		assertThat(furniture.getWidth(), is(3));
 		assertThat(furniture.getHeight(), is(3));

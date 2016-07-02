@@ -9,15 +9,21 @@ public class RoomScannerTest {
 
 	private static final String EOL = "\n";
 
+	public static final String ROOM_1 = "5,6" + EOL
+										+ "..###." + EOL
+										+ ".####." + EOL
+										+ "######" + EOL
+										+ "######" + EOL
+										+ "...###";
+	
+	public static final String ROOM_2 = "3,3" + EOL
+										+ "###" + EOL
+										+ "##." + EOL
+										+ "##.";
+
 	@Test
 	public void roomCreation() {
-		String roomSource =	"5,6" + EOL
-			+ "..###." + EOL
-			+ ".####." + EOL
-			+ "######" + EOL
-			+ "######" + EOL
-			+ "...###";
-		RoomScanner roomScanner = new RoomScanner(roomSource);
+		RoomScanner roomScanner = new RoomScanner(ROOM_1);
 		Room room = roomScanner.getRoom();
 		assertThat(room.getWidth(), is(6));
 		assertThat(room.getHeight(), is(5));

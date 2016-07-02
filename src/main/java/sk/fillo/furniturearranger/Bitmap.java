@@ -1,5 +1,7 @@
 package sk.fillo.furniturearranger;
 
+import java.util.Arrays;
+
 
 public class Bitmap {
 
@@ -36,8 +38,44 @@ public class Bitmap {
 		return cols;
 	}
 
+	public char[][] getCells() {
+		return cells;
+	}
+
 	public char getCellAt(int row, int col) {
 		return cells[row][col];
+	}
+
+	public void setCellAt(int row, int col, char value) {
+		cells[row][col] = value;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(cells);
+		result = prime * result + cols;
+		result = prime * result + rows;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Bitmap other = (Bitmap) obj;
+		if (!Arrays.deepEquals(cells, other.cells))
+			return false;
+		if (cols != other.cols)
+			return false;
+		if (rows != other.rows)
+			return false;
+		return true;
 	}
 
 }
