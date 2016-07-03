@@ -20,6 +20,8 @@ import org.junit.Test;
 public class AppTest {
 
 	private static final String INPUT_FILE = "src/test/resources/input1.txt";
+	private static final String INPUT_FILE_NEGATIVE1 = "src/test/resources/inputNeg1.txt";
+	private static final String INPUT_FILE_NEGATIVE2 = "src/test/resources/inputNeg2.txt";
 	private static final String OUTPUT_FILE = "output.txt";
 	private static final String EXPECTED_OUTPUT1 = "A(0,2) B(1,3)";
 	private static final String EXPECTED_OUTPUT1_ALT = "B(1,3) A(0,2)";
@@ -72,4 +74,17 @@ public class AppTest {
 		assertThat(outputFileContent, anyOf(containsString(EXPECTED_OUTPUT1), containsString(EXPECTED_OUTPUT1_ALT)));
 		assertThat(outputFileContent, anyOf(containsString(EXPECTED_OUTPUT2), containsString(EXPECTED_OUTPUT2_ALT)));
 	}
+
+	@Test
+	public void testAppFileInputFileNegative1() throws IOException {
+		App.main(new String[] { "-i", INPUT_FILE_NEGATIVE1});
+		assertThat(outContent.toString().length(), is(0));
+	}
+
+	@Test
+	public void testAppFileInputFileNegative2() throws IOException {
+		App.main(new String[] { "-i", INPUT_FILE_NEGATIVE2});
+		assertThat(outContent.toString().length(), is(0));
+	}
+
 }

@@ -26,7 +26,8 @@ public class LayoutManager {
 		for (Furniture furniture : furnitures) {
 			Set<Room> nextLayout = computeAllPosibleLayouts(furniture);
 			if (nextLayout.isEmpty()) {
-				return new HashSet<Room>();
+				layouts = new HashSet<Room>();
+				break;
 			}
 			layouts = nextLayout;
 		}
