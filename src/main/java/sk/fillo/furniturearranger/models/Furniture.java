@@ -32,7 +32,7 @@ public class Furniture {
 		return getFieldAt(row, col) == EMPTY;
 	}
 
-	// hasCode generated from type field only
+	// hasCode generated from 'type' field only
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -41,7 +41,7 @@ public class Furniture {
 		return result;
 	}
 
-	// equals generated from type field only
+	// equals generated from 'type' field only
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

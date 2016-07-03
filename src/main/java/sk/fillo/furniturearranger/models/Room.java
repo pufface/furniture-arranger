@@ -13,7 +13,7 @@ public class Room {
 	private final Map<Furniture, Position> arrangements;
 
 	public Room(char[][] space) {
-		this.floorPlan = new Bitmap(space);
+		floorPlan = new Bitmap(space);
 		arrangements = new HashMap<Furniture, Position>();
 	}
 
@@ -95,14 +95,17 @@ public class Room {
 		arrangements.put(furniture, new Position(row, col));
 	}
 
+	// hashCode generated from 'floorPlan' field only
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((floorPlan == null) ? 0 : floorPlan.hashCode());
+		result = prime * result
+				+ ((floorPlan == null) ? 0 : floorPlan.hashCode());
 		return result;
 	}
 
+	// equals generate from 'floorPlan' field only
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
