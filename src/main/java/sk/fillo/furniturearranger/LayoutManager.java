@@ -38,7 +38,7 @@ public class LayoutManager {
 		try (OutputStreamWriter writer = new OutputStreamWriter(out)) {
 			for (Room layout : layouts) {
 				writer.write(layout.getFormatedOutput());
-				writer.write(System.lineSeparator());
+				writer.write(App.EOL);
 			}
 		}
 	}
