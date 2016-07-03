@@ -3,6 +3,7 @@ package sk.fillo.furniturearranger;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -21,6 +22,7 @@ public class LayoutManager {
 	}
 
 	public Set<Room> computeLayouts() {
+		Collections.sort(furnitures, Furniture.getSizeComparator());
 		for (Furniture furniture : furnitures) {
 			Set<Room> nextLayout = computeAllPosibleLayouts(furniture);
 			if (nextLayout.isEmpty()) {

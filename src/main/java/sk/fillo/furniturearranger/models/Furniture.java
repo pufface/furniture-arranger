@@ -1,5 +1,7 @@
 package sk.fillo.furniturearranger.models;
 
+import java.util.Comparator;
+
 public class Furniture {
 
 	private static final char EMPTY = '.';
@@ -54,6 +56,17 @@ public class Furniture {
 		if (type != other.type)
 			return false;
 		return true;
+	}
+
+	public static Comparator<Furniture> getSizeComparator() {
+		return new Comparator<Furniture>() {
+			@Override
+			public int compare(Furniture furniture1, Furniture furniture2) {
+				int area1 = furniture1.getHeight() * furniture1.getWidth();
+				int area2 = furniture2.getHeight() * furniture2.getWidth();
+				return area2 - area1;
+			}
+		};
 	}
 
 }
