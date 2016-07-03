@@ -2,7 +2,7 @@ package sk.fillo.furniturearranger.models;
 
 public class Furniture {
 
-	public static final char EMPTY = '.';
+	private static final char EMPTY = '.';
 
 	private char type;
 	private final Bitmap body;

@@ -12,8 +12,8 @@ import java.util.Iterator;
 
 public class ArgumentsParser {
 
-	public static final String INPUT_FILE = "-i";
-	public static final String OUTPUF_FILE = "-o";
+	private static final String INPUT_FILE = "-i";
+	private static final String OUTPUF_FILE = "-o";
 
 	private String inputFile;
 	private String outputFile;
