@@ -1,52 +1,55 @@
-Room
-----
-Dimension format: "height(rows), width(cols)"
-Dimension example: "5,6"
-Coordinates space: top-left origin
- 012345
-0..###.
-1.####.
-2######
-3######
-4...###
+Furniture Arranger
+==================
 
-Furniture
+Usage
+-----
+    java -jar furniture-arranger-0.1.jar [-i <input_file>] [-o <output_file>]
+
+Arguments
 ---------
-Representation: typeWidthBody
+    -i <input_file>   Read inputs from file. Optional, systemIn is used by default.
+    -o <output_file>  Write outputs to file. Optional, systemOut is used by default.
 
-Coordinates space: top-left origin
-A2####:
- 01
-0##
-1##
+Example input
+-------------
+    5,6
+    ..###.
+    .####.
+    ######
+    ######
+    ...###
 
-B3.#.###.#.
- 012
-0.#.
-1###
-2.#.
+    A2####
+    B3.#.###.#.
 
+Shortcut
+--------
+    EOF   CTRL + D
 
 Build
-=====
-mvn eclipse:eclipse  //create Eclipse project
-mvn clean package    //create Jar
-
+-----
+    mvn eclipse:eclipse  //create Eclipse project
+    mvn test             //run test
+    mvn clean package    //create Jar
 
 
 Assignment
-==========
+----------
+```
 
 UVOD
-----
+""""
+
 Zadanie vyzaduje zakladne znalosti Javy, konkretne balikov java.lang, java.util a java.io. Je vhodne riesenie aj testovat, ci uz pomocou vlastneho programu s main metodou, alebo pomocou kniznic JUnit alebo TestNG. Cielom zadania je zistit uroven kvality kodu, dodrziavanie konvencii, OOP, volbu vhodnych mien pre komponenty a premenne, citatelnost kodu...
 
 IZBY A NABYTOK
---------------
+""""""""""""""
+
 Program riesi zistenie vsetkych moznych kombinacii, ako napratat zadany nabytok do zadanej izby. Rozmery izby aj nabytku su zadane v rovnakych jednotkach nazvanych "pole", cim je mysleny 1 stvorec (napr. 1m stvorcovy, ale nezalezi na tom).
 
 FORMAT VSTUPOV
---------------
+""""""""""""""
+
 Tvary izby a nabytku su zadane dvomi roznymi formatmi (vystup z roznych externych informacnych systemov).
 
 Izba moze mat nepravidelny tvar a bude zadana ako viacriadkovy text v nasledovnom formate:
@@ -81,7 +84,8 @@ B:
 .#.
 
 PROBLEM NA RIESENIE
--------------------
+"""""""""""""""""""
+
 Pri danych vstupoch je potrebne zostavit zoznam vsetkych rieseni, ako dostat zadany nabytok do zadanej izby, pricom kazdy typ nabytku je potrebne umiestnit prave raz. Nabytok sa nesmie prekryvat navzajom polami oznacenymi ako # a sucasne musia byt vsetky polia nabytku # vnutri izby (t.j. na poliach # danej izby).
 
 Nabytok sa pri umiestnovani do izby neotaca.
@@ -103,7 +107,8 @@ Poradie rieseni nie je dolezite. Na prvom riadku je navyse ukazka, ze zadanie na
 Ak neexistuje riesenie, vystup bude prazdny.
 
 POZIADAVKY NA RIESENIE
-----------------------
+""""""""""""""""""""""
+
 Pouzite Java SE 7 alebo 8, vysledny projekt by mal byt otvoritelny v IDE Eclipse (alebo IntelliJ IDEA Community Edition).
 
 Struktura projektu je lubovolna (moze byt Maven Standard Directory Layout, ale nie je to vyzadovane).
@@ -119,3 +124,4 @@ Sposob komunikacie s programom je na dodavatelovi - moze ist o stdin/stdout (nap
 POUZITIE PROGRAMU MUSI BYT ZDOKUMENTOVANE v prilozenom README.txt subore.
 
 Netreba pisat vela, len tolko, kolko by nam malo stacit na jeho zostavenie spustenie.
+```
