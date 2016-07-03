@@ -14,7 +14,7 @@ import org.junit.Test;
 public class AppTest {
 
 	private static final String[] ARGS = new String[] { "-f", "src/test/resources/input1.txt" };
-	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+	private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
 	@Before
 	public void setUpStreams() {

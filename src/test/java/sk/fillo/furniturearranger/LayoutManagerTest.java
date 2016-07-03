@@ -19,15 +19,15 @@ import sk.fillo.furniturearranger.scanner.RoomScannerTest;
 
 public class LayoutManagerTest {
 
-	Room room = new RoomScanner(RoomScannerTest.ROOM_1).getRoom();
-	List<Furniture> furnitures = new FurnitureScanner(FurnitureScannerTest.FURNITURES).getFurnitures();
-	Furniture furnitureA = furnitures.get(0);
-	Furniture furnitureB = furnitures.get(1);
+	private Room room = new RoomScanner(RoomScannerTest.ROOM_1).getRoom();
+	private List<Furniture> furnitures = new FurnitureScanner(FurnitureScannerTest.FURNITURES1).getFurnitures();
+	private Furniture furnitureA = furnitures.get(0);
+	private Furniture furnitureB = furnitures.get(1);
 
 	@Test
 	public void testArranger1() {
-		Room layout1 = room.lay(new Furniture(furnitureA, 2, 0)).lay(new Furniture(furnitureB, 3, 1));
-		Room layout2 = room.lay(new Furniture(furnitureA, 3, 0)).lay(new Furniture(furnitureB, 0, 1));
+		Room layout1 = room.layToPosition(furnitureA, 0, 2).layToPosition(furnitureB, 1, 3);
+		Room layout2 = room.layToPosition(furnitureA, 0, 3).layToPosition(furnitureB, 1, 0);
 
 		LayoutManager manager = new LayoutManager(room, Arrays.asList(furnitureA, furnitureB));
 		Set<Room> layouts = manager.computeLayouts();

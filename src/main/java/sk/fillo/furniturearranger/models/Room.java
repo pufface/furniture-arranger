@@ -8,54 +8,54 @@ public class Room {
 
 	private static final char EMPTY = '#';
 
-	private final Bitmap space;
-	private final Set<Furniture> furnitures;
+	private final Bitmap floorPlan;
+	private final Set<FurniturePosition> arrangements;
 
 	public Room(char[][] space) {
-		this.space = new Bitmap(space);
-		furnitures = new HashSet<Furniture>();
+		this.floorPlan = new Bitmap(space);
+		arrangements = new HashSet<FurniturePosition>();
 	}
 
 	public Room(Room room) {
-		space = new Bitmap(room.space.getCells());
-		furnitures = new HashSet<Furniture>(room.furnitures);
+		floorPlan = new Bitmap(room.floorPlan.getCells());
+		arrangements = new HashSet<FurniturePosition>(room.arrangements);
 	}
 
 	public int getWidth() {
-		return space.getCols();
+		return floorPlan.getCols();
 	}
 
 	public int getHeight() {
-		return space.getRows();
+		return floorPlan.getRows();
 	}
 
-	public char getFieldAt(int x, int y) {
-		return space.getCellAt(y, x);
+	public Set<FurniturePosition> getArrangements() {
+		return arrangements;
 	}
 
-	public boolean isEmptyAt(int x, int y) {
-		if (x < 0 || x >= space.getCols() || y < 0 || y >= space.getRows()) {
+	public char getFieldAt(int row, int col) {
+		return floorPlan.getCellAt(row, col);
+	}
+
+	public boolean isEmptyAt(int row, int col) {
+		if (row < 0 || row >= floorPlan.getRows() || col < 0 || col >= floorPlan.getCols()) {
 			return false;
 		}
-		return getFieldAt(x, y) == EMPTY;
+		return getFieldAt(row, col) == EMPTY;
 	}
 
-	public Set<Furniture> getFurnitures() {
-		return furnitures;
-	}
-
-	public Room lay(Furniture furniture) {
-		if (!canHold(furniture)) {
+	public Room layToPosition(Furniture furniture, int row, int col) {
+		if (!canPlaceToPosition(furniture, row, col)) {
 			return null;
 		}
 		Room room = new Room(this);
-		room.add(furniture);
+		room.addToPosition(furniture, row, col);
 		return room;
 	}
 
 	public String getFormatedOutput() {
 		StringBuilder sb = new StringBuilder();
-		Iterator<Furniture> it = furnitures.iterator();
+		Iterator<FurniturePosition> it = arrangements.iterator();
 		if (it.hasNext()) {
 			sb.append(it.next());
 		}
@@ -66,12 +66,10 @@ public class Room {
 		return sb.toString();
 	}
 
-	private boolean canHold(Furniture furniture) {
+	private boolean canPlaceToPosition(Furniture furniture, int row, int col) {
 		for (int r = 0; r < furniture.getHeight(); r++) {
 			for (int c = 0; c < furniture.getWidth(); c++) {
-				int roomPosX = furniture.getX() + c;
-				int roomPosY = furniture.getY() + r;
-				if (!isEmptyAt(roomPosX, roomPosY) && !furniture.isEmptyAt(c, r)) {
+				if (!isEmptyAt(row + r, col + c) && !furniture.isEmptyAt(r, c)) {
 					return false;
 				}
 			}
@@ -79,22 +77,22 @@ public class Room {
 		return true;
 	}
 
-	private void add(Furniture furniture) {
+	private void addToPosition(Furniture furniture, int row, int col) {
 		for (int r = 0; r < furniture.getHeight(); r++) {
 			for (int c = 0; c < furniture.getWidth(); c++) {
-				if (!furniture.isEmptyAt(c, r)) {
-					space.setCellAt(furniture.getY() + r, furniture.getX() + c, furniture.getType());
+				if (!furniture.isEmptyAt(r, c)) {
+					floorPlan.setCellAt(row + r, col + c, furniture.getType());
 				}
 			}
 		}
-		furnitures.add(furniture);
+		arrangements.add(new FurniturePosition(furniture, row, col));
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((space == null) ? 0 : space.hashCode());
+		result = prime * result + ((floorPlan == null) ? 0 : floorPlan.hashCode());
 		return result;
 	}
 
@@ -107,10 +105,10 @@ public class Room {
 		if (getClass() != obj.getClass())
 			return false;
 		Room other = (Room) obj;
-		if (space == null) {
-			if (other.space != null)
+		if (floorPlan == null) {
+			if (other.floorPlan != null)
 				return false;
-		} else if (!space.equals(other.space))
+		} else if (!floorPlan.equals(other.floorPlan))
 			return false;
 		return true;
 	}

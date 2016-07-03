@@ -31,12 +31,12 @@ public class RoomScannerTest {
 		assertThat(room.getWidth(), is(6));
 		assertThat(room.getHeight(), is(5));
 		assertThat(room.getFieldAt(0, 0), is('.'));
-		assertThat(room.getFieldAt(1, 0), is('.'));
-		assertThat(room.getFieldAt(2, 0), is('#'));
-		assertThat(room.getFieldAt(3, 0), is('#'));
-		assertThat(room.getFieldAt(4, 0), is('#'));
-		assertThat(room.getFieldAt(5, 0), is('.'));
-		assertThat(room.getFieldAt(5, 4), is('#'));
+		assertThat(room.getFieldAt(0, 1), is('.'));
+		assertThat(room.getFieldAt(0, 2), is('#'));
+		assertThat(room.getFieldAt(0, 3), is('#'));
+		assertThat(room.getFieldAt(0, 4), is('#'));
+		assertThat(room.getFieldAt(0, 5), is('.'));
+		assertThat(room.getFieldAt(4, 5), is('#'));
 	}
 
 }

@@ -45,8 +45,7 @@ public class LayoutManager {
 		for (Room room : layouts) {
 			for (int r = 0; r < room.getHeight(); r++) {
 				for (int c = 0; c < room.getWidth(); c++) {
-					Furniture fur = new Furniture(furniture, c, r);
-					Room nextLayout = room.lay(fur);
+					Room nextLayout = room.layToPosition(furniture, r, c);
 					if (nextLayout != null) {
 						possibleLayouts.add(nextLayout);
 					}
