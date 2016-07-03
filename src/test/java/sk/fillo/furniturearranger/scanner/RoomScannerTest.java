@@ -25,7 +25,7 @@ public class RoomScannerTest {
 										+ "##.";
 
 	@Test
-	public void roomCreation() {
+	public void room1Creation() {
 		RoomScanner roomScanner = new RoomScanner(ROOM_1);
 		Room room = roomScanner.getRoom();
 		assertThat(room.getWidth(), is(6));
@@ -37,6 +37,23 @@ public class RoomScannerTest {
 		assertThat(room.getFieldAt(0, 4), is('#'));
 		assertThat(room.getFieldAt(0, 5), is('.'));
 		assertThat(room.getFieldAt(4, 5), is('#'));
+	}
+
+	@Test
+	public void room2Creation() {
+		RoomScanner roomScanner = new RoomScanner(ROOM_2);
+		Room room = roomScanner.getRoom();
+		assertThat(room.getWidth(), is(3));
+		assertThat(room.getHeight(), is(3));
+		assertThat(room.getFieldAt(0, 0), is('#'));
+		assertThat(room.getFieldAt(0, 1), is('#'));
+		assertThat(room.getFieldAt(0, 2), is('#'));
+		assertThat(room.getFieldAt(1, 0), is('#'));
+		assertThat(room.getFieldAt(1, 1), is('#'));
+		assertThat(room.getFieldAt(1, 2), is('.'));
+		assertThat(room.getFieldAt(2, 0), is('#'));
+		assertThat(room.getFieldAt(2, 1), is('#'));
+		assertThat(room.getFieldAt(2, 2), is('.'));
 	}
 
 }

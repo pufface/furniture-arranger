@@ -1,24 +1,25 @@
 package sk.fillo.furniturearranger.models;
 
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Set;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class Room {
 
 	private static final char EMPTY = '#';
 
 	private final Bitmap floorPlan;
-	private final Set<FurniturePosition> arrangements;
+	private final Map<Furniture, Position> arrangements;
 
 	public Room(char[][] space) {
 		this.floorPlan = new Bitmap(space);
-		arrangements = new HashSet<FurniturePosition>();
+		arrangements = new HashMap<Furniture, Position>();
 	}
 
 	public Room(Room room) {
 		floorPlan = new Bitmap(room.floorPlan.getCells());
-		arrangements = new HashSet<FurniturePosition>(room.arrangements);
+		arrangements = new HashMap<Furniture, Position>(room.arrangements);
 	}
 
 	public int getWidth() {
@@ -29,8 +30,12 @@ public class Room {
 		return floorPlan.getRows();
 	}
 
-	public Set<FurniturePosition> getArrangements() {
-		return arrangements;
+	public Position getFurniturePosition(Furniture furniture) {
+		return arrangements.get(furniture);
+	}
+
+	public int countFurnitures() {
+		return arrangements.size();
 	}
 
 	public char getFieldAt(int row, int col) {
@@ -55,13 +60,15 @@ public class Room {
 
 	public String getFormatedOutput() {
 		StringBuilder sb = new StringBuilder();
-		Iterator<FurniturePosition> it = arrangements.iterator();
+		Iterator<Entry<Furniture, Position>> it = arrangements.entrySet().iterator();
 		if (it.hasNext()) {
-			sb.append(it.next());
+			Entry<Furniture, Position> entry = it.next();
+			sb.append(entry.getKey().getType() + entry.getValue().getFormatedOutput());
 		}
 		while (it.hasNext()) {
 			sb.append(" ");
-			sb.append(it.next());
+			Entry<Furniture, Position> entry = it.next();
+			sb.append(entry.getKey().getType() + entry.getValue().getFormatedOutput());
 		}
 		return sb.toString();
 	}
@@ -85,7 +92,7 @@ public class Room {
 				}
 			}
 		}
-		arrangements.add(new FurniturePosition(furniture, row, col));
+		arrangements.put(furniture, new Position(row, col));
 	}
 
 	@Override

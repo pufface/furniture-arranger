@@ -17,11 +17,11 @@ public class FurnitureScannerTest {
 	public static final String FURNITURES1 = "A2####" + EOL
 											+ "B3.#.###.#.";
 
-	public static final String FURNITURES2 = "A2##.#" + EOL
-											+ "B1###";
+	public static final String FURNITURES2 = "A2###." + EOL
+											+ "B2##";
 
 	@Test
-	public void furnitureCreationA() {
+	public void furniture1CreationA() {
 		FurnitureScanner furnitureScanner = new FurnitureScanner(FURNITURES1);
 		List<Furniture> furnitures = furnitureScanner.getFurnitures();
 		Furniture furnitureA = furnitures.get(0);
@@ -35,7 +35,7 @@ public class FurnitureScannerTest {
 	}
 
 	@Test
-	public void furnitureCreationB() {
+	public void furniture1CreationB() {
 		FurnitureScanner furnitureScanner = new FurnitureScanner(FURNITURES1);
 		List<Furniture> furnitures = furnitureScanner.getFurnitures();
 		Furniture furnitureB = furnitures.get(1);
@@ -47,6 +47,32 @@ public class FurnitureScannerTest {
 		assertThat(furnitureB.getFieldAt(2, 0), is('.'));
 		assertThat(furnitureB.getFieldAt(1, 1), is('#'));
 		assertThat(furnitureB.getFieldAt(2, 2), is('.'));
+	}
+
+	@Test
+	public void furniture2CreationA() {
+		FurnitureScanner furnitureScanner = new FurnitureScanner(FURNITURES2);
+		List<Furniture> furnitures = furnitureScanner.getFurnitures();
+		Furniture furnitureA = furnitures.get(0);
+		assertThat(furnitureA.getWidth(), is(2));
+		assertThat(furnitureA.getHeight(), is(2));
+		assertThat(furnitureA.getType(), is('A'));
+		assertThat(furnitureA.getFieldAt(0, 0), is('#'));
+		assertThat(furnitureA.getFieldAt(0, 1), is('#'));
+		assertThat(furnitureA.getFieldAt(1, 0), is('#'));
+		assertThat(furnitureA.getFieldAt(1, 1), is('.'));
+	}
+
+	@Test
+	public void furniture2CreationB() {
+		FurnitureScanner furnitureScanner = new FurnitureScanner(FURNITURES2);
+		List<Furniture> furnitures = furnitureScanner.getFurnitures();
+		Furniture furnitureB = furnitures.get(1);
+		assertThat(furnitureB.getWidth(), is(2));
+		assertThat(furnitureB.getHeight(), is(1));
+		assertThat(furnitureB.getType(), is('B'));
+		assertThat(furnitureB.getFieldAt(0, 0), is('#'));
+		assertThat(furnitureB.getFieldAt(0, 1), is('#'));
 	}
 
 }
