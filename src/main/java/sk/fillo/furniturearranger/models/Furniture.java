@@ -2,36 +2,30 @@ package sk.fillo.furniturearranger.models;
 
 import java.util.Comparator;
 
-public class Furniture {
+public class Furniture extends Bitmap {
 
 	private static final char EMPTY = '.';
 
 	private char type;
-	private final Bitmap body;
 
 	public Furniture(char type, char[][] bodySource) {
+		super(bodySource);
 		this.type = type;
-		body = new Bitmap(bodySource);
 	}
 
 	public char getType() {
 		return type;
 	}
 
-	public int getWidth() {
-		return body.getCols();
-	}
-
-	public int getHeight() {
-		return body.getRows();
-	}
-
-	public char getFieldAt(int row, int col) {
-		return body.getCellAt(row, col);
-	}
-
 	public boolean isEmptyAt(int row, int col) {
-		return getFieldAt(row, col) == EMPTY;
+		return cells[row][col] == EMPTY;
+	}
+
+	public boolean checkBoundary(int row, int col) {
+		if (row < 0 || row >= rows || col < 0 || col >= cols) {
+			return false;
+		}
+		return true;
 	}
 
 	// hasCode generated from 'type' field only

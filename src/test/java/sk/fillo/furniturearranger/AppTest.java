@@ -1,9 +1,9 @@
 package sk.fillo.furniturearranger;
 
-import static org.junit.Assert.assertThat;
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.anyOf;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -20,6 +20,8 @@ import org.junit.Test;
 public class AppTest {
 
 	private static final String INPUT_FILE = "src/test/resources/input1.txt";
+	private static final String INPUT_FILE_BIG1 = "src/test/resources/inputBig1.txt";
+	private static final String INPUT_FILE_BIG2 = "src/test/resources/inputBig2.txt";
 	private static final String INPUT_FILE_NEGATIVE1 = "src/test/resources/inputNeg1.txt";
 	private static final String INPUT_FILE_NEGATIVE2 = "src/test/resources/inputNeg2.txt";
 	private static final String OUTPUT_FILE = "output.txt";
@@ -86,5 +88,17 @@ public class AppTest {
 		App.main(new String[] { "-i", INPUT_FILE_NEGATIVE2});
 		assertThat(outContent.toString().length(), is(0));
 	}
+
+	@Test
+	public void testAppFileInputFileBig1() throws IOException {
+		App.main(new String[] { "-i", INPUT_FILE_BIG1});
+		assertThat(outContent.toString().length() > 900000, is(true));
+	}
+
+//	@Test
+//	public void testAppFileInputFileBig2() throws IOException {
+//		App.main(new String[] { "-i", INPUT_FILE_BIG2});
+//		assertThat(outContent.toString().length() > 900000, is(true));
+//	}
 
 }

@@ -28,10 +28,10 @@ public class FurnitureScannerTest {
 		assertThat(furnitureA.getWidth(), is(2));
 		assertThat(furnitureA.getHeight(), is(2));
 		assertThat(furnitureA.getType(), is('A'));
-		assertThat(furnitureA.getFieldAt(0, 0), is('#'));
-		assertThat(furnitureA.getFieldAt(0, 1), is('#'));
-		assertThat(furnitureA.getFieldAt(1, 0), is('#'));
-		assertThat(furnitureA.getFieldAt(1, 1), is('#'));
+		assertThat(furnitureA.getCellAt(0, 0), is('#'));
+		assertThat(furnitureA.getCellAt(0, 1), is('#'));
+		assertThat(furnitureA.getCellAt(1, 0), is('#'));
+		assertThat(furnitureA.getCellAt(1, 1), is('#'));
 	}
 
 	@Test
@@ -42,11 +42,11 @@ public class FurnitureScannerTest {
 		assertThat(furnitureB.getWidth(), is(3));
 		assertThat(furnitureB.getHeight(), is(3));
 		assertThat(furnitureB.getType(), is('B'));
-		assertThat(furnitureB.getFieldAt(0, 0), is('.'));
-		assertThat(furnitureB.getFieldAt(1, 0), is('#'));
-		assertThat(furnitureB.getFieldAt(2, 0), is('.'));
-		assertThat(furnitureB.getFieldAt(1, 1), is('#'));
-		assertThat(furnitureB.getFieldAt(2, 2), is('.'));
+		assertThat(furnitureB.getCellAt(0, 0), is('.'));
+		assertThat(furnitureB.getCellAt(1, 0), is('#'));
+		assertThat(furnitureB.getCellAt(2, 0), is('.'));
+		assertThat(furnitureB.getCellAt(1, 1), is('#'));
+		assertThat(furnitureB.getCellAt(2, 2), is('.'));
 	}
 
 	@Test
@@ -57,10 +57,10 @@ public class FurnitureScannerTest {
 		assertThat(furnitureA.getWidth(), is(2));
 		assertThat(furnitureA.getHeight(), is(2));
 		assertThat(furnitureA.getType(), is('A'));
-		assertThat(furnitureA.getFieldAt(0, 0), is('#'));
-		assertThat(furnitureA.getFieldAt(0, 1), is('#'));
-		assertThat(furnitureA.getFieldAt(1, 0), is('#'));
-		assertThat(furnitureA.getFieldAt(1, 1), is('.'));
+		assertThat(furnitureA.getCellAt(0, 0), is('#'));
+		assertThat(furnitureA.getCellAt(0, 1), is('#'));
+		assertThat(furnitureA.getCellAt(1, 0), is('#'));
+		assertThat(furnitureA.getCellAt(1, 1), is('.'));
 	}
 
 	@Test
@@ -71,8 +71,8 @@ public class FurnitureScannerTest {
 		assertThat(furnitureB.getWidth(), is(2));
 		assertThat(furnitureB.getHeight(), is(1));
 		assertThat(furnitureB.getType(), is('B'));
-		assertThat(furnitureB.getFieldAt(0, 0), is('#'));
-		assertThat(furnitureB.getFieldAt(0, 1), is('#'));
+		assertThat(furnitureB.getCellAt(0, 0), is('#'));
+		assertThat(furnitureB.getCellAt(0, 1), is('#'));
 	}
 
 }

@@ -6,9 +6,10 @@ import java.util.Arrays;
 public class Bitmap {
 
 	// Coordinates space: top-left origin
-	private final int rows;
-	private final int cols;
-	private char[][] cells;
+	protected final int rows;
+	protected final int cols;
+	protected char[][] cells;
+	protected Position[][] positions;
 
 	public Bitmap(char[][] body) {
 		if (body == null || body.length == 0) {
@@ -19,6 +20,7 @@ public class Bitmap {
 			cols = body[0].length;
 		}
 		cells = new char[rows][cols];
+		positions = new Position[rows][cols];
 		for (int r = 0; r < rows; r++) {
 			char[] row = body[r];
 			if (row.length != cols) {
@@ -26,6 +28,7 @@ public class Bitmap {
 			}
 			for (int c = 0; c < cols; c ++) {
 				cells[r][c] = body[r][c];
+				positions[r][c] = new Position(r, c);
 			}
 		}
 	}
@@ -34,12 +37,16 @@ public class Bitmap {
 		return rows;
 	}
 
+	public int getHeight() {
+		return rows;
+	}
+
 	public int getCols() {
 		return cols;
 	}
 
-	public char[][] getCells() {
-		return cells;
+	public int getWidth() {
+		return cols;
 	}
 
 	public char getCellAt(int row, int col) {
@@ -48,6 +55,10 @@ public class Bitmap {
 
 	public void setCellAt(int row, int col, char value) {
 		cells[row][col] = value;
+	}
+
+	public Position getPosition(int row, int col) {
+		return positions[row][col];
 	}
 
 	@Override

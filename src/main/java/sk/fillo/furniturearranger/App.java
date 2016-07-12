@@ -6,6 +6,7 @@ import java.io.OutputStream;
 import java.util.List;
 import java.util.Scanner;
 
+import sk.fillo.furniturearranger.layout.LayoutManager;
 import sk.fillo.furniturearranger.models.Furniture;
 import sk.fillo.furniturearranger.models.Room;
 import sk.fillo.furniturearranger.scanner.FurnitureScanner;
@@ -32,7 +33,7 @@ public class App {
 			List<Furniture> furnitures = new FurnitureScanner(inputScanner).getFurnitures();
 			LayoutManager manager = new LayoutManager(room, furnitures);
 			manager.computeLayouts();
-			manager.printLayoutOutputTo(output);
+			manager.printLayoutsOutputTo(output);
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {

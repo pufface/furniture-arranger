@@ -30,13 +30,13 @@ public class RoomScannerTest {
 		Room room = roomScanner.getRoom();
 		assertThat(room.getWidth(), is(6));
 		assertThat(room.getHeight(), is(5));
-		assertThat(room.getFieldAt(0, 0), is('.'));
-		assertThat(room.getFieldAt(0, 1), is('.'));
-		assertThat(room.getFieldAt(0, 2), is('#'));
-		assertThat(room.getFieldAt(0, 3), is('#'));
-		assertThat(room.getFieldAt(0, 4), is('#'));
-		assertThat(room.getFieldAt(0, 5), is('.'));
-		assertThat(room.getFieldAt(4, 5), is('#'));
+		assertThat(room.getCellAt(0, 0), is('.'));
+		assertThat(room.getCellAt(0, 1), is('.'));
+		assertThat(room.getCellAt(0, 2), is('#'));
+		assertThat(room.getCellAt(0, 3), is('#'));
+		assertThat(room.getCellAt(0, 4), is('#'));
+		assertThat(room.getCellAt(0, 5), is('.'));
+		assertThat(room.getCellAt(4, 5), is('#'));
 	}
 
 	@Test
@@ -45,15 +45,15 @@ public class RoomScannerTest {
 		Room room = roomScanner.getRoom();
 		assertThat(room.getWidth(), is(3));
 		assertThat(room.getHeight(), is(3));
-		assertThat(room.getFieldAt(0, 0), is('#'));
-		assertThat(room.getFieldAt(0, 1), is('#'));
-		assertThat(room.getFieldAt(0, 2), is('#'));
-		assertThat(room.getFieldAt(1, 0), is('#'));
-		assertThat(room.getFieldAt(1, 1), is('#'));
-		assertThat(room.getFieldAt(1, 2), is('.'));
-		assertThat(room.getFieldAt(2, 0), is('#'));
-		assertThat(room.getFieldAt(2, 1), is('#'));
-		assertThat(room.getFieldAt(2, 2), is('.'));
+		assertThat(room.getCellAt(0, 0), is('#'));
+		assertThat(room.getCellAt(0, 1), is('#'));
+		assertThat(room.getCellAt(0, 2), is('#'));
+		assertThat(room.getCellAt(1, 0), is('#'));
+		assertThat(room.getCellAt(1, 1), is('#'));
+		assertThat(room.getCellAt(1, 2), is('.'));
+		assertThat(room.getCellAt(2, 0), is('#'));
+		assertThat(room.getCellAt(2, 1), is('#'));
+		assertThat(room.getCellAt(2, 2), is('.'));
 	}
 
 }
