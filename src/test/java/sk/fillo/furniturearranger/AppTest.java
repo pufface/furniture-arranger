@@ -95,10 +95,10 @@ public class AppTest {
 		assertThat(outContent.toString().length() > 900000, is(true));
 	}
 
-//	@Test
-//	public void testAppFileInputFileBig2() throws IOException {
-//		App.main(new String[] { "-i", INPUT_FILE_BIG2});
-//		assertThat(outContent.toString().length() > 900000, is(true));
-//	}
+	@Test
+	public void testAppFileInputFileBig2() throws IOException {
+		App.main(new String[] { "-i", INPUT_FILE_BIG2});
+		assertThat(outContent.toString().length() > 6000000, is(true));
+	}
 
 }
