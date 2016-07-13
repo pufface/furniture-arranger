@@ -78,7 +78,6 @@ public class LayoutManager {
 	}
 
 	private List<Position[]> computeAllPosibleLayouts(List<Position[]> layouts, Furniture furniture) {
-		System.err.println("going to traverse " + layouts.size());
 		List<Position[]> possibleLayouts = new ArrayList<Position[]>();
 		for (Position[] layout : layouts) {
 			for (int r = 0; r < room.getHeight(); r++) {
@@ -89,7 +88,6 @@ public class LayoutManager {
 				}
 			}
 		}
-		System.err.println("next to traverse " + possibleLayouts.size());
 		return possibleLayouts;
 	}
 
